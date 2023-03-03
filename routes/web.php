@@ -17,11 +17,13 @@ use App\Http\Controllers\Product\ProductController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
 Route::get('/', [ArticleController::class, 'index']);
 Route::get('/articles', [ArticleController::class, 'index']);
 
 Route::get(
-    '/articles/detail/{$id}',
+    '/articles/detail/{id}',
     [ArticleController::class, 'detail']
 );
 Route::get('/Article', [CategoryController::class, 'index']);
@@ -30,3 +32,7 @@ Route::get('/Product', [ProductController::class, 'index']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/articles/add', [ArticleController::class, 'add']);
+Route::post('/articles/add', [ArticleController::class, 'create']);
+Route::get('/articles/delete/{id}', [ArticleController::class, 'delete']);
